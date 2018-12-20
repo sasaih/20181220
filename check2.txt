@@ -1,0 +1,88 @@
+[
+    {
+        "id": "74f18da3.bc12e4",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1ee17b6e.9722a5",
+        "type": "inject",
+        "z": "74f18da3.bc12e4",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "1ce3321a.a8155e"
+            ]
+        ]
+    },
+    {
+        "id": "1ce3321a.a8155e",
+        "type": "function",
+        "z": "74f18da3.bc12e4",
+        "name": "",
+        "func": "msg.headers={\n    deviceKey:\"oVr3y8MmYp0Z6wRY\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 200,
+        "wires": [
+            [
+                "2451143a.0d0dac"
+            ]
+        ]
+    },
+    {
+        "id": "2451143a.0d0dac",
+        "type": "http request",
+        "z": "74f18da3.bc12e4",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/DappmOUO/datachannels/Temperature/datapoints.csv",
+        "tls": "",
+        "x": 450,
+        "y": 300,
+        "wires": [
+            [
+                "d244476d.a565d8",
+                "f26b7b56.786c88"
+            ]
+        ]
+    },
+    {
+        "id": "d244476d.a565d8",
+        "type": "http response",
+        "z": "74f18da3.bc12e4",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 680,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "f26b7b56.786c88",
+        "type": "debug",
+        "z": "74f18da3.bc12e4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 680,
+        "y": 420,
+        "wires": []
+    }
+]
